@@ -11,7 +11,7 @@ lessons and tests are esp32zx's CLAUDE.md; this project is the glue.
 |---|---|
 | `src/main.c` | The Spectrum as an `emu_machine_t`: esp32zx's `main/main.c` ported (malloc for PSRAM, `EMU_LOGx`, `usleep`, the ROM message, `shutdown()` writes the disks back, `main()`) |
 | `src/settings.c` | Section `zx` of the settings file: `model`, `joystick`, `tape_fast` |
-| `src/rom_store.c` | `~/rpi5emu/roms/`: 128.rom, plus2.rom, plus3.rom, trdos.rom (any case) |
+| `src/rom_store.c` | `~/rpi5emu/zx/roms/` (`emu_rom_dir()`): 128.rom, plus2.rom, plus3.rom, trdos.rom (any case) |
 | `CMakeLists.txt` | esp32zx's core, `CONFIG_Z80_CONTENTION=1`, the cores z80, upd765, diskspace |
 
 Keep `src/main.c` in step with esp32zx's `main/main.c` (the key map, the

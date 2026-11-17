@@ -49,7 +49,7 @@ bool rom_store_load(rom_id_t id, uint8_t *buf)
     }
     uint32_t size = rom_store_size(id);
     char path[1200];
-    snprintf(path, sizeof(path), "%s/roms/%s", emu_data_dir(), roms[id].name);
+    snprintf(path, sizeof(path), "%s/%s", emu_rom_dir(), roms[id].name);
     FILE *f = fopen(path, "rb");
     if (f == NULL) {
         /* as copied from a FAT card: upper case */

@@ -4,8 +4,8 @@
 #include <stdint.h>
 
 /*
- * The Spectrum's ROMs: files in the data folder's "roms" folder
- * (emu_data_dir()/roms), named as esp32zx's: 128.rom, plus2.rom, plus3.rom,
+ * The Spectrum's ROMs: files in the machine's roms/ folder
+ * (emu_rom_dir()), named as esp32zx's: 128.rom, plus2.rom, plus3.rom,
  * trdos.rom (any case).
  */
 typedef enum { ROM_128, ROM_PLUS2, ROM_PLUS3, ROM_TRDOS, ROM_COUNT } rom_id_t;

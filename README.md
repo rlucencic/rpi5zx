@@ -126,8 +126,8 @@ cmake -S . -B build -G Ninja && cmake --build build
 ### 3. ROMs
 
 `128.rom` (32 KB), `plus2.rom` (32 KB), `plus3.rom` (64 KB) and, for the
-Beta 128's disks, `trdos.rom` (16 KB) in the data folder's `roms/`
-(`~/rpi5emu/roms`). Not part of this repository.
+Beta 128's disks, `trdos.rom` (16 KB) in the data folder's `zx/roms/`
+(`~/rpi5emu/zx/roms`). Not part of this repository.
 
 ### 4. First start
 
@@ -184,7 +184,7 @@ flowchart LR
   EMU -- picture --> WIN
   EMU -- sound --> SND[SDL audio]
   WIN -- keys · mouse --> EMU
-  DATA[("~/rpi5emu<br>roms · zx")]
+  DATA[("~/rpi5emu<br>zx · zx/roms")]
   EMU <--> DATA
   WEB <--> DATA
 ```

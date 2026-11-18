@@ -1,8 +1,8 @@
 /*
- * ZX Spectrum 128K / +2 / +3 emulator on the Raspberry Pi 5.
+ * ZX Spectrum 128K / +2 / +3 emulator with SDL 3.
  *
  * The Pi's side (window, sound, keyboard, console, settings, the data
- * folder) is the shared runtime in ../rpi5emu, the Spectrum esp32zx's
+ * folder) is the shared runtime in ../sdlemu, the Spectrum esp32zx's
  * (../esp32zx/components/zx); this file plugs one into the other, as
  * esp32zx's main/main.c does on the boards (and mostly is that file):
  * memory, ROMs, settings, keyboard map, joystick, disks, tape and

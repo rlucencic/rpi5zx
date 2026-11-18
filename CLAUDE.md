@@ -1,7 +1,7 @@
-# rpi5zx: the ZX Spectrum 128K, +2, +3 on the Raspberry Pi 5
+# sdlzx: the ZX Spectrum 128K, +2, +3 on Linux and macOS through SDL 3
 
 esp32zx's Spectrum (`../esp32zx/components/zx`, platform independent) on
-the rpi5emu runtime (`../rpi5emu`, its CLAUDE.md: the workflow, the Pi,
+the sdlemu runtime (`../sdlemu`, its CLAUDE.md: the workflow, the Pi,
 the lessons), the Z80 and uPD765 esp32emu's. The machine's own behaviour,
 lessons and tests are esp32zx's CLAUDE.md; this project is the glue.
 
@@ -11,7 +11,7 @@ lessons and tests are esp32zx's CLAUDE.md; this project is the glue.
 |---|---|
 | `src/main.c` | The Spectrum as an `emu_machine_t`: esp32zx's `main/main.c` ported (malloc for PSRAM, `EMU_LOGx`, `usleep`, the ROM message, `shutdown()` writes the disks back, `main()`) |
 | `src/settings.c` | Section `zx` of the settings file: `model`, `joystick`, `tape_fast` |
-| `src/rom_store.c` | `~/rpi5emu/zx/roms/` (`emu_rom_dir()`): 128.rom, plus2.rom, plus3.rom, trdos.rom (any case) |
+| `src/rom_store.c` | `~/sdlemu/zx/roms/` (`emu_rom_dir()`): 128.rom, plus2.rom, plus3.rom, trdos.rom (any case) |
 | `CMakeLists.txt` | esp32zx's core, `CONFIG_Z80_CONTENTION=1`, the cores z80, upd765, diskspace |
 
 Keep `src/main.c` in step with esp32zx's `main/main.c` (the key map, the
@@ -20,9 +20,9 @@ drives, the status): a change there is usually wanted here too.
 ## Build, run, check
 
 ```sh
-../rpi5emu/tools/pi.sh rpi5zx build
-../rpi5emu/tools/pi.sh rpi5zx run          # the setup screen first; -S straight in
-../rpi5emu/tools/console.sh i
+../sdlemu/tools/pi.sh sdlzx build
+../sdlemu/tools/pi.sh sdlzx run          # the setup screen first; -S straight in
+../sdlemu/tools/console.sh i
 ```
 
 Console: the runtime's (`h`) and esp32zx's: `k <n>` tap key n (half-row *

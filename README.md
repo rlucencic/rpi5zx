@@ -1,13 +1,14 @@
-<h1 align="center">rpi5zx</h1>
+<h1 align="center">sdlzx</h1>
 
 <p align="center">
-  <b>A ZX Spectrum 128K, +2 or +3 on the Raspberry Pi 5, in a window of its own.</b><br>
+  <b>A ZX Spectrum 128K, +2 or +3 in an SDL 3 window on Linux or macOS.</b><br>
   Z80 with the ULA's contention, AY sound, tapes that load at once, the +3's disks and a Beta 128 (TR-DOS) on the 128K and +2.
 </p>
 
 <p align="center">
   <img alt="Raspberry Pi 5" src="https://img.shields.io/badge/Raspberry%20Pi-5-c51a4a">
-  <img alt="Linux arm64" src="https://img.shields.io/badge/Linux-arm64-333">
+  <img alt="Linux arm64 and amd64" src="https://img.shields.io/badge/Linux-arm64%20%7C%20amd64-333">
+  <img alt="macOS arm64" src="https://img.shields.io/badge/macOS-arm64-333">
   <img alt="SDL 3" src="https://img.shields.io/badge/SDL-3-1d4ed8">
   <img alt="Z80" src="https://img.shields.io/badge/CPU-Z80-555">
   <img alt="MIT licence" src="https://img.shields.io/badge/licence-MIT-green">
@@ -25,28 +26,27 @@
   <sub>The Spectrum 128's start-up menu and a line run in 128 BASIC, on the Pi. Every pixel shown twice in each direction, border included.</sub>
 </p>
 
-rpi5zx runs [esp32zx](https://github.com/rlucencic/esp32zx)'s Spectrum on a Raspberry Pi 5 with
-64-bit Linux, in a window of its own (X11 or Wayland, through SDL 3). The machine is the
+sdlzx runs [esp32zx](https://github.com/rlucencic/esp32zx)'s Spectrum on 64-bit Linux (arm64 and amd64) and Apple Silicon macOS. SDL 3 provides the window, sound and input. The machine is the
 same code as on the ESP32 boards: esp32zx's platform-independent core and
 [esp32emu](https://github.com/rlucencic/esp32emu)'s CPU core, on
-[rpi5emu](https://github.com/rlucencic/rpi5emu), the family's Linux runtime: a setup
-screen in the window, sound, the Pi's keyboard and mouse, a web page on your network and a
+[sdlemu](https://github.com/rlucencic/sdlemu), the family's desktop runtime: a setup
+screen in the window, sound, the host's keyboard and mouse, a web page on your network and a
 console.
 
-It's one of the rpi5 family, the Raspberry Pi versions of the esp32 emulators:
-[rpi5cpc](https://github.com/rlucencic/rpi5cpc) (Amstrad CPC),
-[rpi5cbm](https://github.com/rlucencic/rpi5cbm) (Commodore 64 and 128),
-[rpi5coco](https://github.com/rlucencic/rpi5coco) (Tandy Color Computer 2 and 3),
-[rpi5gs](https://github.com/rlucencic/rpi5gs) (Apple IIGS),
-[rpi5msx](https://github.com/rlucencic/rpi5msx) (MSX1 and MSX2),
-[rpi5xl](https://github.com/rlucencic/rpi5xl) (Atari 800XL and 130XE),
-[rpi5ste](https://github.com/rlucencic/rpi5ste) (Atari STE),
-[rpi5pc](https://github.com/rlucencic/rpi5pc) (IBM PC/XT and PC/AT),
-[rpi5mac](https://github.com/rlucencic/rpi5mac) (Macintosh Plus, SE, Classic),
-[rpi5mac2](https://github.com/rlucencic/rpi5mac2) (Macintosh LC and II),
-[rpi5mac3](https://github.com/rlucencic/rpi5mac3) (Macintosh LC II and LC III),
-[rpi5arc](https://github.com/rlucencic/rpi5arc) (Acorn Archimedes),
-[rpi5ami](https://github.com/rlucencic/rpi5ami) (Amiga 500, 2000, 600, 1200).
+It belongs to the SDL desktop family of the ESP32 emulators:
+[sdlcpc](https://github.com/rlucencic/sdlcpc) (Amstrad CPC),
+[sdlcbm](https://github.com/rlucencic/sdlcbm) (Commodore 64 and 128),
+[sdlcoco](https://github.com/rlucencic/sdlcoco) (Tandy Color Computer 2 and 3),
+[sdlgs](https://github.com/rlucencic/sdlgs) (Apple IIGS),
+[sdlmsx](https://github.com/rlucencic/sdlmsx) (MSX1 and MSX2),
+[sdlxl](https://github.com/rlucencic/sdlxl) (Atari 800XL and 130XE),
+[sdlste](https://github.com/rlucencic/sdlste) (Atari STE),
+[sdlpc](https://github.com/rlucencic/sdlpc) (IBM PC/XT and PC/AT),
+[sdlmac](https://github.com/rlucencic/sdlmac) (Macintosh Plus, SE, Classic),
+[sdlmac2](https://github.com/rlucencic/sdlmac2) (Macintosh LC and II),
+[sdlmac3](https://github.com/rlucencic/sdlmac3) (Macintosh LC II and LC III),
+[sdlarc](https://github.com/rlucencic/sdlarc) (Acorn Archimedes),
+[sdlami](https://github.com/rlucencic/sdlami) (Amiga 500, 2000, 600, 1200).
 
 ## Features
 
@@ -105,11 +105,8 @@ It's one of the rpi5 family, the Raspberry Pi versions of the esp32 emulators:
 
 ### 1. What you need
 
-- A Raspberry Pi 5 with 64-bit Linux (developed on Ubuntu 26.04; any Linux with SDL 3.2 or
-  later should do)
-- The tools and libraries:
-  `sudo apt install build-essential cmake ninja-build pkg-config libsdl3-dev libsdl3-ttf-dev libpng-dev`
-- [esp32emu](https://github.com/rlucencic/esp32emu), [rpi5emu](https://github.com/rlucencic/rpi5emu)
+- 64-bit Linux (including Raspberry Pi 5) or Apple Silicon macOS with SDL 3.2 or newer. See [desktop build dependencies](https://github.com/rlucencic/sdlemu#building).
+- [esp32emu](https://github.com/rlucencic/esp32emu), [sdlemu](https://github.com/rlucencic/sdlemu)
   and [esp32zx](https://github.com/rlucencic/esp32zx), cloned next to this project
 - The ROMs (below)
 
@@ -117,9 +114,9 @@ It's one of the rpi5 family, the Raspberry Pi versions of the esp32 emulators:
 
 ```sh
 git clone https://github.com/rlucencic/esp32emu.git
-git clone https://github.com/rlucencic/rpi5emu.git
+git clone https://github.com/rlucencic/sdlemu.git
 git clone https://github.com/rlucencic/esp32zx.git
-git clone https://github.com/rlucencic/rpi5zx.git && cd rpi5zx
+git clone https://github.com/rlucencic/sdlzx.git && cd sdlzx
 cmake -S . -B build -G Ninja && cmake --build build
 ```
 
@@ -127,13 +124,13 @@ cmake -S . -B build -G Ninja && cmake --build build
 
 `128.rom` (32 KB), `plus2.rom` (32 KB), `plus3.rom` (64 KB) and, for the
 Beta 128's disks, `trdos.rom` (16 KB) in the data folder's `zx/roms/`
-(`~/rpi5emu/zx/roms`). Not part of this repository.
+(`~/sdlemu/zx/roms`). Not part of this repository.
 
 ### 4. First start
 
-1. `build/rpi5zx`: the setup screen opens in a window.
+1. `build/sdlzx`: the setup screen opens in a window.
 2. Choose the model and click **Start**.
-3. Put images into `~/rpi5emu/zx/`, drop them on the window or the web page, and
+3. Put images into `~/sdlemu/zx/`, drop them on the window or the web page, and
    insert them on the setup screen's **Disks** page.
 
 ## Using it
@@ -144,9 +141,9 @@ Beta 128's disks, `trdos.rom` (16 KB) in the data folder's `zx/roms/`
 | Full screen | Ctrl+Alt+F |
 | Give the mouse to the machine, take it back | A click in the window; Ctrl+Alt+G |
 | Run as fast as it goes (warp) | Ctrl+Alt+W, again for real speed |
-| Take a screenshot | Ctrl+Alt+S (into `~/rpi5emu/screenshots`), or the console's `s` |
-| Insert an image | The setup screen's **Disks** page, drop it on the window or the web page, or name it on the command line: `build/rpi5zx game.tzx` |
-| Start straight into the machine | `build/rpi5zx -S`, with the setup screen's rows as `--choice`: `build/rpi5zx -S --choice Model=+3` |
+| Take a screenshot | Ctrl+Alt+S (into `~/sdlemu/screenshots`), or the console's `s` |
+| Insert an image | The setup screen's **Disks** page, drop it on the window or the web page, or name it on the command line: `build/sdlzx game.tzx` |
+| Start straight into the machine | `build/sdlzx -S`, with the setup screen's rows as `--choice`: `build/sdlzx -S --choice Model=+3` |
 | Show the window on another computer | Log in with `ssh -C -Y <the Pi>` and start it there: fine for still pictures; games want the Pi's own monitor |
 | Load a tape | Insert it into **Tape**, then **Tape Loader** in the menu, or `LOAD ""` |
 | Save to tape | Insert a `.TAP` (**New** makes an empty one), then `SAVE "name"` |
@@ -154,8 +151,8 @@ Beta 128's disks, `trdos.rom` (16 KB) in the data folder's `zx/roms/`
 | Use a TR-DOS disk | Insert the `.TRD`/`.SCL` into **A:** on the 128K or +2 and reset: TR-DOS starts (`RUN` runs its boot file, `LIST` shows the catalogue); from BASIC, `RANDOMIZE USR 15616` |
 | Load a snapshot | Insert the `.SNA`/`.Z80` into **Snapshot**: it starts at once (and again when the Spectrum is restarted) |
 
-Images live in `~/rpi5emu/zx/`, settings in `~/.config/rpi5emu/settings.ini`; the
-inserted images are remembered across starts. `build/rpi5zx --help` lists the options.
+Images live in `~/sdlemu/zx/`, settings in `~/.config/sdlemu/settings.ini`; the
+inserted images are remembered across starts. `build/sdlzx --help` lists the options.
 
 **Keyboard**: letters, digits, Enter and Space as on the Spectrum; Shift is
 CAPS SHIFT, Ctrl and Alt are SYMBOL SHIFT. Backspace is DELETE, the cursor
@@ -184,7 +181,7 @@ flowchart LR
   EMU -- picture --> WIN
   EMU -- sound --> SND[SDL audio]
   WIN -- keys · mouse --> EMU
-  DATA[("~/rpi5emu<br>zx · zx/roms")]
+  DATA[("~/sdlemu<br>zx · zx/roms")]
   EMU <--> DATA
   WEB <--> DATA
 ```
@@ -193,17 +190,17 @@ flowchart LR
   platform independent: the same code runs on the ESP32 boards.
 - **`src/`**: the glue, esp32zx's `main/main.c` ported: memory, ROMs, settings, keyboard map,
   drives and status.
-- **[rpi5emu](https://github.com/rlucencic/rpi5emu)**: the window, the setup screen, sound,
+- **[sdlemu](https://github.com/rlucencic/sdlemu)**: the window, the setup screen, sound,
   input, the web page, the console, the data folder and the settings.
 - **[esp32emu](https://github.com/rlucencic/esp32emu)**: the CPU core (Z80).
 
 ## Development
 
 ```sh
-../rpi5emu/tools/pi.sh rpi5zx build        # from another computer: sync to the Pi, build there
-../rpi5emu/tools/pi.sh rpi5zx run          # its window on this computer (ssh -C -Y)
-../rpi5emu/tools/pi.sh rpi5zx headless     # no window: drive it through the console
-../rpi5emu/tools/console.sh i 's /tmp/shot.png'
+../sdlemu/tools/pi.sh sdlzx build        # from another computer: sync to the Pi, build there
+../sdlemu/tools/pi.sh sdlzx run          # its window on this computer (ssh -C -Y)
+../sdlemu/tools/pi.sh sdlzx headless     # no window: drive it through the console
+../sdlemu/tools/console.sh i 's /tmp/shot.png'
 ```
 
 `CLAUDE.md` has the details: the layout, how it was ported, the checks; esp32zx's own
